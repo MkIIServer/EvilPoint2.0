@@ -1,0 +1,4 @@
+name: EvilPoint2.0
+version: ${project.version}
+main: tw.mics.spigot.plugin.evilpoint.EvilPoint
+api-version: 1.16
