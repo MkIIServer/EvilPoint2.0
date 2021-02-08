@@ -6,6 +6,7 @@ import tw.mics.spigot.plugin.evilpoint.config.Config;
 import tw.mics.spigot.plugin.evilpoint.data.Database;
 import tw.mics.spigot.plugin.evilpoint.data.EvilPointData;
 import tw.mics.spigot.plugin.evilpoint.listener.EvilPointListener;
+import tw.mics.spigot.plugin.evilpoint.listener.PlayerDeathListener;
 import tw.mics.spigot.plugin.evilpoint.schedule.EvilPointSchedule;
 
 public final class EvilPoint extends JavaPlugin {
@@ -23,6 +24,7 @@ public final class EvilPoint extends JavaPlugin {
 
         new EvilPointListener(this);
         new EvilPointSchedule(this);
+        new PlayerDeathListener(this);
     }
 
     @Override
