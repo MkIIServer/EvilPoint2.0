@@ -167,4 +167,30 @@ public class EvilPointListener extends MyListener {
             break;
         }
     }
+
+    @EventHandler
+    public void onEnd_CrystalMake(InventoryClickEvent event){
+        if(event.getClickedInventory() == null)return;
+        if(event.getClickedInventory().getType() != InventoryType.WORKBENCH)return;
+        if(event.getCurrentItem() == null)return;
+        if(event.getCurrentItem().getType() != Material.END_CRYSTAL)return;
+        if(event.getRawSlot() != 0) return;
+        Inventory inv = event.getClickedInventory();
+        switch(event.getAction()){
+            case PICKUP_ONE:
+            case PICKUP_HALF:
+            case PICKUP_ALL:
+                evilpointdata.plusEvil((Player) event.getWhoClicked(), 30);
+                break;
+            case MOVE_TO_OTHER_INVENTORY:
+                int min_craft = 64;
+                for(int i=1 ;i<=9; i++){
+                    if(inv.getItem(i).getAmount() < min_craft)min_craft = inv.getItem(i).getAmount();
+                }
+                evilpointdata.plusEvil((Player) event.getWhoClicked(), 30*min_craft);
+                break;
+            default:
+                break;
+        }
+    }
 }
