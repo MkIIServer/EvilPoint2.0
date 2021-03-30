@@ -1,5 +1,6 @@
 package tw.mics.spigot.plugin.evilpoint.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -132,10 +133,19 @@ public class EvilPointListener extends MyListener {
     //放置TNT
     @EventHandler
     public void onTNTPlaced(BlockPlaceEvent event){
-        if(event.isCancelled())return;
-        if(event.getBlockPlaced().getType() == Material.TNT){
-            Player player = event.getPlayer();
-            evilpointdata.plusEvil(player, 30);
+        Player player = event.getPlayer();
+
+        if (event.getBlockPlaced().getType() == Material.TNT){
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+                if (event.isCancelled()){
+                    return;
+                }
+                else {
+                    evilpointdata.plusEvil(player, 30);
+
+                }
+            }, 5L);
+
         }
     }
     
