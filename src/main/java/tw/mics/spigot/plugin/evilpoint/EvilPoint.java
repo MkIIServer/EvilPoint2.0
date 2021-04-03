@@ -25,7 +25,7 @@ public final class EvilPoint extends JavaPlugin {
 
         new EvilPointListener(this);
         new EvilPointSchedule(this);
-        new PlayerDeathListener(this);
+        //new PlayerDeathListener(this);
         new PlayerPlaceBlockListener(this);
     }
 
